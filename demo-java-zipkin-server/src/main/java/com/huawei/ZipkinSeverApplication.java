@@ -7,6 +7,7 @@ import zipkin.server.EnableZipkinServer;
 
 @SpringBootApplication
 @EnableZipkinServer
+// @EnableZipkinStreamServer
 public class ZipkinSeverApplication {
 	// #region main
 

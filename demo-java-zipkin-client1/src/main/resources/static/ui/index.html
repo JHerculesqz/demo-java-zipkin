@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HystrixClientDemo</title>
+    <script type="text/javascript" src="lib/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/component/AjaxUtils.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		$("#btnSpan1").click(function(){
+    			ajaxUtils.postAjax("/zipkin/client/span1", {
+    				name: "111"
+    			}, function(res){
+    				console.log(res);
+    			});
+    		});
+    	});
+    </script>
+</head>
+<body>
+	<button id="btnSpan1">Span1</button><br/>
+</body>
+</html>

@@ -40,7 +40,7 @@ dependencies {
 	compile('org.springframework.cloud:spring-cloud-starter-hystrix-dashboard')
 	compile('org.springframework.cloud:spring-cloud-starter-ribbon')
 	compile('org.springframework.cloud:spring-cloud-starter-zuul')
-	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+	//compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-websocket')
 	runtime('org.springframework.boot:spring-boot-devtools')
@@ -53,8 +53,10 @@ dependencies {
 	//compile('org.springframework.cloud:spring-cloud-sleuth-zipkin-stream')
 	//compile('org.springframework.cloud:spring-cloud-starter-sleuth')
 	//compile('org.springframework.cloud:spring-cloud-starter-zipkin')
+	//compile('org.springframework.cloud:spring-cloud-stream-binder-rabbit')
 	compile('io.zipkin.java:zipkin-server')
 	runtime('io.zipkin.java:zipkin-autoconfigure-ui')
+	//compile('org.springframework.cloud:spring-cloud-stream-binder-rabbit')
 }
 
 dependencyManagement {

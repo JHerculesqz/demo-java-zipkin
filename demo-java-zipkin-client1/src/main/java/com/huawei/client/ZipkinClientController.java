@@ -1,7 +1,5 @@
 package com.huawei.client;
 
-import java.util.concurrent.ExecutionException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
@@ -22,22 +20,12 @@ public class ZipkinClientController {
 
 	// #endregion
 
-	// #region span1
+	// #region span2
 
-	@RequestMapping("zipkin/client/span1")
+	@RequestMapping("zipkin/client/span2")
 	@ResponseBody
-	public Span1ResVo span1(@RequestBody Span1Vo oSpan1Vo) throws InterruptedException, ExecutionException {
-		return zipkinClientService.span1(oSpan1Vo);
-	}
-
-	// #endregion
-
-	// #region span3
-
-	@RequestMapping("zipkin/client/span3")
-	@ResponseBody
-	public Span1ResVo span3(@RequestBody Span1Vo oSpan1Vo) {
-		return zipkinClientService.span3(oSpan1Vo);
+	public Span1ResVo span2(@RequestBody Span1Vo oSpan1Vo) {
+		return zipkinClientService.span2(oSpan1Vo);
 	}
 
 	// #endregion
