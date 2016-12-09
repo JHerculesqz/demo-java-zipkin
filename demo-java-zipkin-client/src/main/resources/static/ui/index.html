@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>HystrixClientDemo</title>
+    <title>ZipkinDemo</title>
     <script type="text/javascript" src="lib/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="js/component/AjaxUtils.js"></script>
     <script type="text/javascript">
     	$(document).ready(function(){
     		$("#btnSpan1").click(function(){
-    			ajaxUtils.postAjax("/zipkin/client/span1", {
-    				name: "111"
-    			}, function(res){
-    				console.log(res);
-    			});
+    			for(var i=0;i<1000;i++){
+    				ajaxUtils.postAjax("/zipkin/client/span1", {
+        				name: "111"
+        			}, function(res){
+        				console.log(res);
+        			});
+    			}
     		});
     	});
     </script>
