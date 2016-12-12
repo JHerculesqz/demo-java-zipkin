@@ -1,46 +1,58 @@
 # 目的#
  
-	实验SpringBoot如何集成zipkin
+实验SpringBoot如何集成zipkin
 	
 # Server端集成步骤(http方式) #
+**STEP1.Gradle中引用依赖的jar**
 	
-	STEP1.Gradle中引用依赖的jar
 	compile('io.zipkin.java:zipkin-server')
 	runtime('io.zipkin.java:zipkin-autoconfigure-ui')
 	
-	STEP2.在XXXApplication.java增加@EnableZipkinServer
+**STEP2.在XXXApplication.java增加@EnableZipkinServer**
 	
-	STEP3.运行Server端，查看http://localhost:9411
+**STEP3.运行Server端，查看http://localhost:9411**
 	
 # Client端集成步骤(http方式) #
+
+**STEP1.Gradle中引用依赖的包**
 	
-	STEP1.Gradle中引用依赖的包
 	compile('org.springframework.cloud:spring-cloud-starter-sleuth')
 	compile('org.springframework.cloud:spring-cloud-starter-zipkin')
 	
-	STEP2.修改application.yml
+**STEP2.修改application.yml**
+	
 	spring:
 	  application:
 	    name: zipkinClient
-	zipkin:
-	  enabled: true
-	  baseUrl: http://localhost:9411/
-	sample:
+      sleuth:
+        sampler:
+          percentage: 0.5
 	  zipkin:
 	    enabled: true
+	    baseUrl: http://localhost:9411/
+	  sample:
+	    zipkin:
+	      enabled: true
+
+	TODO:sleuth.sampler.percentage待验证
+	TODO:现在是用InMemoryStorage，后续要修改成其他的Storage
 	
-	STEP3.在xxxxApplication.java中，增加采样器(不喜欢这段代码)
+**STEP3.在xxxxApplication.java中，增加采样器(不喜欢这段代码)**
+	
 	@Bean
 	Sampler sampler() {
 		return new AlwaysSampler();
 	}
 	
-	STEP4.使用HttpUtilsEx、ZipkinUtils两个工具类分别可监控post链和线程链
+	TODO:如果采用sleuth.sampler.percentage，应该不需要STEP3,待验证
+	
+**STEP4.使用HttpUtilsEx、ZipkinUtils两个工具类分别可监控post链和线程链**
+	
 	详细技术点不赘述，详见代码
 	潜规则1：RestTemplate不能反复new，1个服务只能有1个javabean，这是zipkin调用链成链的关键
 	潜规则2：Zipkin监控线程需要使用Tracer
 	
-	STEP5.运行Client端，查看http://localhost:7000
+**STEP5.运行Client端，查看http://localhost:7000**
 
 # 代码样例说明 #
 	

@@ -3,10 +3,13 @@ server:
 
 spring:
   application:
-    name: zipkinClient1
+    name: zipkinClient
+#  rabbitmq:
+#    host: 127.0.0.1
+#    port: 5672
   zipkin:
     enabled: true
     baseUrl: http://localhost:9411/
-sample:
-  zipkin:
-    enabled: true
+  sample:
+    zipkin:
+      enabled: true
