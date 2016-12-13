@@ -12,6 +12,8 @@
 	
 **STEP3.运行Server端，查看http://localhost:9411**
 	
+	TODO:验证一下是否一定是9411
+	
 # Client端集成步骤(http方式) #
 
 **STEP1.Gradle中引用依赖的包**
@@ -51,6 +53,8 @@
 	详细技术点不赘述，详见代码
 	潜规则1：RestTemplate不能反复new，1个服务只能有1个javabean，这是zipkin调用链成链的关键
 	潜规则2：Zipkin监控线程需要使用Tracer
+
+	TODO:Hystrix的Command如何监控？
 	
 **STEP5.运行Client端，查看http://localhost:7000**
 
